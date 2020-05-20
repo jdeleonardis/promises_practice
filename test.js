@@ -76,17 +76,12 @@ const updateFileData = function () {
 
 async function read() {
     try {
-        const read = await readWriteFileData();
-        const write = await updateFileData();
-    }
-    catch (e) {
-        console.error(e);
-    }
-}
-
-async function write() {
-    try {
-        const write = await updateFileData()
+        const read = await readWriteFileData()
+        .then( async function(){
+            const write = await updateFileData();
+        }
+        )
+        
     }
     catch (e) {
         console.error(e);
@@ -94,7 +89,18 @@ async function write() {
 }
 
 read();
-write();
+
+// async function write() {
+//     try {
+//         const write = await updateFileData()
+//     }
+//     catch (e) {
+//         console.error(e);
+//     }
+// }
+
+
+//write();
 //********************************************************************** */
 
 // const readWriteFileData = function() {
